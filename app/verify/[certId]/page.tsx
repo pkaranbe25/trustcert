@@ -62,7 +62,10 @@ export default function VerifyPage() {
       try {
         // 1. Fetch from MongoDB
         const res = await fetch(`/api/certificates/verify?certId=${certId}`);
-        if (!res.ok) throw new Error("Credential not found in global registry.");
+        if (!res.ok) {
+          console.warn("Credential not found in registry.");
+          return; // Exit early, isScanning will be set to false in finally
+        }
         const data = await res.json();
         setCertData(data);
 

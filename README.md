@@ -1,6 +1,27 @@
 # TrustCert — Decentralized Institutional Registry
 
+![TrustCert Hero Banner](./public/screenshots/hero.png)
+
 TrustCert is a high-fidelity academic credentialing platform built on the **Stellar Blockchain** and **Next.js 14**. It provides institutions with an immutable command center for issuing, verifying, and managing professional certifications.
+
+---
+
+## 🖼️ Application Preview
+
+<table border="0">
+  <tr>
+    <td width="50%">
+      <p align="center"><b>Institutional Dashboard</b></p>
+      <img src="./public/screenshots/homepage.png" alt="Homepage" width="100%">
+    </td>
+    <td width="50%">
+      <p align="center"><b>Student Management Hub</b></p>
+      <img src="./public/screenshots/student_portal.png" alt="Student Portal" width="100%">
+    </td>
+  </tr>
+</table>
+
+---
 
 ## 🚀 Quick Start
 
@@ -59,5 +80,6 @@ TrustCert uses the **Stellar Testnet** for alpha development.
 - **Signing**: All administrative actions (Issuance/Revocation) require a cryptographic signature from the institution's primary wallet.
 
 ---
+
 
 

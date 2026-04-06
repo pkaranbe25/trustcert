@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { webcrypto } from "node:crypto"
+import { type CertMetadataInput } from "./stellar"
 const crypto = webcrypto as unknown as Crypto;
 
 export function cn(...inputs: ClassValue[]) {
@@ -13,7 +14,7 @@ export function generateCertId(prefix: string = "TC"): string {
   return `${prefix}-${timestamp}-${random}`;
 }
 
-export async function calculateCertHash(data: any): Promise<string> {
+export async function calculateCertHash(data: CertMetadataInput): Promise<string> {
   const str = JSON.stringify(data);
   const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
   const hashArray = Array.from(new Uint8Array(hashBuffer));

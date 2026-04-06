@@ -36,6 +36,14 @@ export async function getAccount(publicKey: string) {
   }
 }
 
+export interface CertMetadataInput {
+  recipientName: string;
+  recipientEmail: string;
+  courseTitle: string;
+  issueDate: string | Date;
+  certId: string;
+}
+
 /**
  * Get the native (XLM) balance of an account
  */
@@ -44,7 +52,7 @@ export async function getAccountBalance(publicKey: string) {
     const account = await getAccount(publicKey);
     if (!account) return "0";
     
-    const nativeBalance = account.balances.find((b: any) => b.asset_type === "native");
+    const nativeBalance = account.balances.find((b) => b.asset_type === "native") as StellarSdk.Horizon.HorizonApi.BalanceLineNative;
     return nativeBalance ? nativeBalance.balance : "0";
   } catch (error) {
     console.error("Error fetching balance:", error);
@@ -173,7 +181,7 @@ export async function buildRevocationTransaction(issuerPublicKey: string, certId
       .addOperation(
         StellarSdk.Operation.manageData({
           name: `cert_${certId.substring(0, 10)}`,
-          value: null as any, // Null deletes the key
+          value: null as unknown as string, // Null deletes the key
         })
       )
       .addMemo(StellarSdk.Memo.text(`REVOKE_${certId.substring(0, 20)}`))
@@ -190,7 +198,7 @@ export async function buildRevocationTransaction(issuerPublicKey: string, certId
 /**
  * Helper to compact cert data into a JSON string
  */
-export function createCertMetadata(data: any) {
+export function createCertMetadata(data: CertMetadataInput) {
   return JSON.stringify({
     n: data.recipientName,
     e: data.recipientEmail,
@@ -199,3 +207,4 @@ export function createCertMetadata(data: any) {
     i: data.certId
   });
 }
+
