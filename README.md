@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TrustCert — Decentralized Institutional Registry
 
-## Getting Started
+TrustCert is a high-fidelity academic credentialing platform built on the **Stellar Blockchain** and **Next.js 14**. It provides institutions with an immutable command center for issuing, verifying, and managing professional certifications.
 
-First, run the development server:
+## 🚀 Quick Start
 
+### 1. Prerequisites
+- **Node.js** 18.x or later
+- **MongoDB Atlas** account
+- **Freighter Wallet** extension (for institutional signing)
+
+### 2. Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/trustcert.git
+cd trustcert
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Environment Setup
+Create a `.env.local` file in the root directory:
+```env
+# Database & Auth
+MONGODB_URI=mongodb+srv://...
+NEXTAUTH_SECRET=your_secret_hash
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Stellar Configuration
+NEXT_PUBLIC_STELLAR_NETWORK=testnet
+NEXT_PUBLIC_HORIZON_URL=https://horizon-testnet.stellar.org
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Optional
+ENABLE_ANALYTICS=true
+```
 
-## Learn More
+### 4. Run Development Server
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Key Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Stellar Settlement**: All credentials are hash-settled on the Stellar ledger via `ManageData` operations.
+- **Institutional Command Center**: Real-time analytics, verification trends, and geographic insights.
+- **Headless API**: Public endpoints (`/api/v1/verify`) with CORS support for third-party HR portals.
+- **Phishing Protection**: High-fidelity coordination between registered domains and verification hostnames.
+- **Master Registry**: A searchable, indexed ledger of all issued and revoked credentials.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔒 Security & Performance
 
-## Deploy on Vercel
+- **Zero-Emerald Branding**: Strict Indigo/Violet/Fuchsia visual system with 3001v-Enrolled coordination.
+- **Hashed API Keys**: Institutional secret keys are SHA-256 hashed on the identity registry.
+- **Optimized Indexing**: MongoDB text indexes on recipient names and unique indexes on certificate IDs.
+- **HSTS & CSP**: Hardened production headers enforced via `vercel.json`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Blockchain Integration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+TrustCert uses the **Stellar Testnet** for alpha development.
+- **Institution Account**: Create an account on the [Stellar Laboratory](https://laboratory.stellar.org/#account-creator?network=testnet) and fund it via **Friendbot**.
+- **Signing**: All administrative actions (Issuance/Revocation) require a cryptographic signature from the institution's primary wallet.
+
+---
+
+### Built with 💜 by Antigravity in the 3001v-Enrolled Context.
